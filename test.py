@@ -3,14 +3,12 @@ import sqlite3
 from sqlite3 import Error
 
 
-def generate_token(size=16):
+def generate_token(size=4):
     return secrets.token_hex(size)
 
-# สร้าง token ขนาด 32 bytes
-# token = generate_token()
-# print(token)
 
-# generate_token()
+print(generate_token())
+
 
 def connect_db(db_file):
     """เชื่อมต่อกับฐานข้อมูล SQLite"""
