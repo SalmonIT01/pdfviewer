@@ -783,7 +783,7 @@ const defaultOptions = {
   defaultOptions.defaultUrl = {
     //value: "/static/web/compressed.tracemonkey-pldi-09.pdf",
     
-    value: FileDefault,
+    value: "/static/web/compressed.tracemonkey-pldi-09.pdf",
     kind: OptionKind.VIEWER
   };
   defaultOptions.sandboxBundleSrc = {
@@ -12376,8 +12376,9 @@ const PDFViewerApplication = {
     const queryString = document.location.search.substring(1);
     const params = parseQueryString(queryString);
     file = params.get("file") ?? AppOptions.get("defaultUrl");
-    console.log(file);
+    
     validateFileURL(file);
+    
     const fileInput = this._openFileInput = document.createElement("input");
     fileInput.id = "fileInput";
     fileInput.hidden = true;
@@ -12431,7 +12432,7 @@ const PDFViewerApplication = {
     }
     if (file) {
       this.open({
-        url: file
+        url: 'data:application/pdf;base64,'+FileDefault
       });
     } else {
       this._hideViewBookmark();
