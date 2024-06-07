@@ -6,10 +6,6 @@ from sqlite3 import Error
 def generate_token(size=4):
     return secrets.token_hex(size)
 
-
-print(generate_token())
-
-
 def connect_db(db_file):
     """เชื่อมต่อกับฐานข้อมูล SQLite"""
     conn = None
@@ -76,10 +72,3 @@ def update_token(token):
    
 
     
-# def test3():
-#     conn = connect_db("docs.db")
-#     docs = conn.execute('SELECT * FROM pdf').fetchall()
-#     print(docs)
-#     for doc in docs:
-#         print(doc[1])
-# test3()
