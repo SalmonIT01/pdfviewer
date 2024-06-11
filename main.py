@@ -30,7 +30,7 @@ def read_pdf(request: Request):
 async def read_index(token ,request: Request):
     name = test(token)
     print(name)
-    pdfcode = pdf_to_base64(name);
+    pdfcode = pdf_to_base64(name)
     context = {
         'request': request,
         'value': f'{pdfcode}',}
@@ -42,10 +42,10 @@ async def read_index(token ,request: Request):
 async def login_form(request: Request):
     return templates.TemplateResponse("signin.html", {"request": request})
 
-import base64
+# import base64
 
-with open("E:/gradProject/pdfjs-4.3.136-dist (1)/pdfjs-4.3.136-dist/static/document/test1.pdf", "rb") as pdf_file:
-    encoded_string = base64.b64encode(pdf_file.read())
+# with open("E:/gradProject/pdfjs-4.3.136-dist (1)/pdfjs-4.3.136-dist/static/document/test1.pdf", "rb") as pdf_file:
+#     encoded_string = base64.b64encode(pdf_file.read())
 
 
 
