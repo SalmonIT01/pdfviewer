@@ -5,11 +5,6 @@ from starlette.staticfiles import StaticFiles
 from test import*
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-# ข้อมูลผู้ใช้ที่ตั้งค่าไว้
-fake_users_db = {
-    "admin": "password"
-}
-
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
