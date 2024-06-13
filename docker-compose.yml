@@ -15,10 +15,11 @@ version: '3.8'
 
 services:
   web:
-    build: ./app
-    container_name: fastapi_app
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    
+    image: pdfjs02:latest
+    container_name: pdfviewernew
+    command: ["uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
     volumes:
-      -
+      - /home/pemadee/login_web/testenv/testproject:/app
     ports:
       - "8000:8000"
