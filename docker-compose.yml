@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  my_fastapi_app:
+    image: pdf101:latest
+    command: "python manage.py runserver 0.0.0.0:8000"
+    container_name: pdfviewer
+    volumes:
+      - /home/pemadee/login_web/testenv/testproject:/app
+
+    ports:
+      - "8008:8000"

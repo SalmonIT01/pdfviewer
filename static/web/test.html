@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF List</title>
+    <link rel="stylesheet" type="text/css" href="/static/web/stylehome.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">PDF Files</div>
+        <div class="login-button">
+            <a href="/login">Login</a>
+        </div>
+    </div>
+    <h1>ไฟล์ทั้งหมด</h1>
+    <ul>
+        {% for doc in docs %}
+            <li><a href="/docs/{{ doc[0] }}"><img src="/static/web/pdf_icon.png" alt="PDF Icon" class="pdf-icon">{{ doc[1] }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
