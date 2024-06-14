@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from starlette.staticfiles import StaticFiles
 from test import*
 from fastapi.responses import HTMLResponse, RedirectResponse
+from db import *
 
 
 app = FastAPI()
@@ -14,8 +15,8 @@ templates = Jinja2Templates(directory="static/web")
 
 @app.get("/")
 def read_pdf(request: Request):
-    conn = connect_db("docs.db")
-    docs = conn.execute('SELECT * FROM pdf').fetchall()
+    conn = condb()
+    docs = showdb(conn)
     print(docs)
     conn.close()
     return templates.TemplateResponse("test.html", {"request": request, "docs": docs})
@@ -23,7 +24,8 @@ def read_pdf(request: Request):
 
 @app.get("/docs/{token}")
 async def read_index(token ,request: Request):
-    name = test(token)
+    conn = condb()
+    name = get_token(conn,token)
     print(name)
     pdfcode = pdf_to_base64(name)
     context = {

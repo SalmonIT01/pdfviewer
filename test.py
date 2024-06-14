@@ -6,6 +6,8 @@ from sqlite3 import Error
 def generate_token(size=4):
     return secrets.token_hex(size)
 
+
+
 def connect_db(db_file):
     """เชื่อมต่อกับฐานข้อมูล SQLite"""
     conn = None
