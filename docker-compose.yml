@@ -1,44 +1,33 @@
-# version: '3.8'
-
-# services:
-#   my_fastapi_app:
-#     image: pdf101:latest
-#     command: "python manage.py runserver 0.0.0.0:8000"
-#     container_name: pdfviewer
-#     volumes:
-#       - /home/pemadee/login_web/testenv/testproject:/app
-
-#     ports:
-#       - "8008:8000"
-
 version: '3.8'
 
 services:
   pdfviewer:
-    image: pdfjs02:latest
-    container_name: pdfviewer1
+    build: ./
+    image: pdfjs:latest  # Assuming 'pdfjs' is your custom image for the PDF viewer
+    container_name: pdfviewer
     command: "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
-      - /home/panupong/Panu/pdfviewer:/app
+      - /home/panupong/Panu/pdfviewer:/app  # Mounting the host directory to '/app' in the container
     ports:
-      - "8008:8000"
+      - "8008:8000"  # Mapping host port 8008 to container port 8000
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/mydatabase
+      DATABASE_URL: postgresql+psycopg2://postgres:panu101@pdf_db/pdfDATABASE
     depends_on:
-      - db
+      - pdf_db
 
-  db:
-    image: postgres:13
-    container_name: postgres_db
-    restart: always
+  pdf_db:
+    image: postgres:15-alpine
+    volumes:
+      - /home/panupong/Panu/pdfviewer/postgres_data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    ports:
+      - "5433:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: '12345'
-      POSTGRES_DB: mydb
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_PASSWORD: panu101
+      POSTGRES_DB: pdfDATABASE
 
-volumes:
-  postgres_data:
+
+
+

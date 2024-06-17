@@ -1,19 +1,19 @@
 import psycopg2
 from psycopg2 import sql
-import pandas as pd
+
 
 def condb():
     return psycopg2.connect(
         host = 'localhost',
-        database = 'mydb',
+        database = 'postgres',
         user = 'postgres',
-        password = 'tanuki101',
+        password = 'panu101',
         port = '5432')
      
 
 def showdb(conn):
     cursor = conn.cursor()
-    select_query = sql.SQL('SELECT * FROM {table}').format(table=sql.Identifier('pdffile'))
+    select_query = sql.SQL('SELECT * FROM {table}').format(table=sql.Identifier('pdf'))
     cursor.execute(select_query)
     records = cursor.fetchall()
     cursor.close()
@@ -70,7 +70,7 @@ def close_connection(conn):
     
 def get_token(conn,token):
     cursor = conn.cursor()
-    select_query = f"SELECT name FROM pdffile where token = '{token}'"
+    select_query = f"SELECT name FROM pdf where token = '{token}'"
     cursor.execute(select_query)
     records = cursor.fetchall()
     cursor.close()
@@ -78,7 +78,7 @@ def get_token(conn,token):
     return records[0][0] 
 
 # conn = condb()
-# print(showdb(conn,'pdffile'))
+# print(showdb(conn))
 # print(get_token(conn,'1w2'))
 
 
