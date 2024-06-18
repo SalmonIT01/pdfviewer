@@ -81,11 +81,12 @@ def get_token(conn,token):
 # print(showdb(conn))
 # print(get_token(conn,'1w2'))
 
-def pee():
-    print('kuy pee')
+# def pee():
+#     print('kuy pee')
 
 
-
+def pp():
+    print('no way action')
 
 
 
