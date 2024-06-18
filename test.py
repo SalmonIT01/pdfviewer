@@ -2,7 +2,7 @@ import base64
 
 def pdf_to_base64(name):
     
-    pdf_path = f"app/static/document/{name}.pdf"
+    pdf_path = f"/app/static/document/{name}.pdf"
     # เปิดไฟล์ PDF ในโหมดอ่านแบบไบนารี
     with open(pdf_path, "rb") as pdf_file:
         # อ่านข้อมูลในไฟล์ PDF

@@ -11,14 +11,14 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="static/web")
+conn = condb()
 
 
 @app.get("/")
 def read_pdf(request: Request):
-    conn = condb()
     docs = showdb(conn)
     print(docs)
-    conn.close()
+    # conn.close()
     return templates.TemplateResponse("test.html", {"request": request, "docs": docs})
 
 

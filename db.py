@@ -4,8 +4,8 @@ from psycopg2 import sql
 
 def condb():
     return psycopg2.connect(
-        host = 'localhost',
-        database = 'postgres',
+        host = 'pdf_db',
+        database = 'pdfDATABASE',
         user = 'postgres',
         password = 'panu101',
         port = '5432')
