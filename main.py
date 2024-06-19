@@ -22,7 +22,7 @@ def read_pdf(request: Request):
     return templates.TemplateResponse("test.html", {"request": request, "docs": docs})
 
 
-@app.get("/docs/{token}")
+@app.get("pdfviewer/docs/{token}")
 async def read_index(token ,request: Request):
     conn = condb()
     name = get_token(conn,token)
